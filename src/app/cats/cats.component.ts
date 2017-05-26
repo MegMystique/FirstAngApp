@@ -9,32 +9,16 @@ import {Cats} from '../cats';
   providers:[CatsService]
 })
 export class CatsComponent implements OnInit {
-  newCat:Cats=new Cats();
-
-  constructor(private catsService:CatsService) {}
-    toggleCatComplete(cat){
-      this.catsService.toggleCatComplete(cat);
-
-    }
-  addCat()
-  {
-    this.catsService.addCat( this.newCat );
-    this.newCat = new Cats();
-  }
-
-  removeCat( cat )
-  {
-    this.catsService.deleteCatById( cat.id );
-  }
-
-  get all_cats()
-  {
-    return this.catsService.getAllCats();
+  items:Cats[]=[];
+  all_sex: string[]=["Male", "Female", "Undefinite"];
+  constructor(private catService:CatsService) {}
+  addItem(name:string, sex:string,age:string,color:string,sterilized:boolean=false,owned:boolean=false){
+    this.catService.addData(name, sex,age,color,sterilized,owned)
   }
 
 
   ngOnInit() {
-
+    this.items = this.catService.getData();
   }
 
 }

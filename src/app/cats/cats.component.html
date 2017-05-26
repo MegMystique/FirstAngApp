@@ -1,7 +1,3 @@
-<p>
-  cats works!
-</p>
-
 <!--<section class="main" *ngIf="cats.length > 0">
   <ul class="cats-list">
     <li *ngFor="let cat of cats" >
@@ -15,9 +11,31 @@
   </ul>
 </section>-->
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+<nav class="navbar navbar-toggleable-md navbar-light "style="background-color: #FFF0F5	;">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">   </a>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Главная <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Добавить животного</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+      Navbar text with an inline element
+    </span>
+  </div>
+</nav>
+<!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   Launch demo modal
-</button>
+</button>-->
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -25,16 +43,34 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Добавить животного</h4>
       </div>
       <div class="modal-body">
-        ...
+        <input class="form-control" [(ngModel)]="name" placeholder = "Имя животного"  />
+
+        <select class="form-control" name="sex" [(ngModel)]="sex" >
+          <option  *ngFor="let all of all_sex" [value]="all">
+            {{all}}
+          </option>
+        </select>
+
+        <input class="form-control" [(ngModel)]="age" placeholder = "Возраст"  />
+
+        <input class="form-control" [(ngModel)]="color" placeholder = "Окрас"  />
+
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        <button  type="button" class="btn btn-primary" (click)="addItem(name, sex,age,color)" data-dismiss="modal">Сохранить</button>
       </div>
     </div>
   </div>
 </div>
+
+<ul>
+  <li *ngFor="let item of items">{{item.name}},{{item.sex}},{{item.age}},{{item.color}},{{item.sterilized}},{{item.owned}}</li>
+  <i class="fa fa-mars" aria-hidden="true"></i>
+</ul>
+
 

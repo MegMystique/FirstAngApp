@@ -1,12 +1,9 @@
 export class Cats {
-  id:number;
-  name:string='';
-  sex:string;
-  age:string='';
-  color:'';
-  sterilized:boolean=false;
-  owned:boolean=false;
-  constructor(values:Object={}) {
-    Object.assign(this,values)
-  }
+
+  constructor(public name:string='',
+              public sex:string,
+              public age:string='',
+              public color:string,
+              public sterilized:boolean=false,
+              public owned:boolean=false) {}
 }
