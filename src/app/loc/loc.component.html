@@ -1,0 +1,17 @@
+<p>
+  loc works!
+</p>
+<form >
+  <p><input list="city" name="mycity" [(ngModel)]="user.currentCity" #mycity="ngModel" (input)="catchValue()">
+  </p>
+  <datalist id="city">
+    <option *ngFor="let item of user.city" (click)="catchValue()">{{item}}</option>
+
+  </datalist>
+  <br>
+  <br>
+  <br>
+  <br>
+  <button [disabled]="!customValidate" (click)="getDatas()">Go</button>
+</form>
+
