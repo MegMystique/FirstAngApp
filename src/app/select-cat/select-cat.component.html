@@ -1,0 +1,5 @@
+<select class="form-control" name="sex" [(ngModel)]="sex" required (change)="onChange($event.target.value)">
+  <option  *ngFor="let allPet of gender" [value]="allPet">
+    {{allPet}}
+  </option>
+</select>
