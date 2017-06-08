@@ -49,7 +49,7 @@
 
         <input class="form-control" [(ngModel)]="cat.name" #name2="ngModel"  required placeholder = "Имя животного"  />
 
-        <app-select-cat></app-select-cat>
+        <app-select-cat #gender2="ngModel" [(ngModel)]="cat.sex" ngDefaultControl  required></app-select-cat>
 
 
         <input class="form-control" [(ngModel)]="cat.age" #age2="ngModel"  required  placeholder = "Возраст"  />
@@ -60,7 +60,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-        <button [disabled]="name2.invalid || age2.invalid || color2.invalid" class="btn btn-primary" (click)="addItem(cat.name, cat.sex,cat.age,cat.color)" data-dismiss="modal">Сохранить</button>
+        <button [disabled]="name2.invalid || age2.invalid || color2.invalid || gender2.invalid" class="btn btn-primary" (click)="addItem(cat.name, cat.sex,cat.age,cat.color)" data-dismiss="modal">Сохранить</button>
       </div>
     </div>
   </div>
@@ -70,5 +70,7 @@ bb
   <li *ngFor="let item of cat">{{item.name}},{{item.sex}},{{item.age}},{{item.color}},{{item.sterilized}},{{item.owned}}</li>
   <i class="fa fa-mars" aria-hidden="true"></i>
 </ul>
-
+<app-loc name="someValue" #someValue2="ngModel" [(ngModel)]="someValue"  ngDefaultControl  required></app-loc>
+<button [disabled]="someValue2.invalid"
+        (click)="onClick()">Добавить</button>
 
