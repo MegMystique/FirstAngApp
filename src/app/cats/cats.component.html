@@ -46,30 +46,28 @@
         <h4 class="modal-title" id="myModalLabel">Добавить животного</h4>
       </div>
       <div class="modal-body">
-        <input class="form-control" [(ngModel)]="name" placeholder = "Имя животного"  />
 
-        <select class="form-control" name="sex" [(ngModel)]="sex" >
-          <option  *ngFor="let all of all_sex" [value]="all">
-            {{all}}
-          </option>
-        </select>
+        <input class="form-control" [(ngModel)]="cat.name" #name2="ngModel"  required placeholder = "Имя животного"  />
 
-        <input class="form-control" [(ngModel)]="age" placeholder = "Возраст"  />
+        <app-select-cat></app-select-cat>
 
-        <input class="form-control" [(ngModel)]="color" placeholder = "Окрас"  />
+
+        <input class="form-control" [(ngModel)]="cat.age" #age2="ngModel"  required  placeholder = "Возраст"  />
+
+        <input class="form-control" [(ngModel)]="cat.color" #color2="ngModel" required  placeholder = "Окрас"  />
 
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-        <button  type="button" class="btn btn-primary" (click)="addItem(name, sex,age,color)" data-dismiss="modal">Сохранить</button>
+        <button [disabled]="name2.invalid || age2.invalid || color2.invalid" class="btn btn-primary" (click)="addItem(cat.name, cat.sex,cat.age,cat.color)" data-dismiss="modal">Сохранить</button>
       </div>
     </div>
   </div>
 </div>
-
+bb
 <ul>
-  <li *ngFor="let item of items">{{item.name}},{{item.sex}},{{item.age}},{{item.color}},{{item.sterilized}},{{item.owned}}</li>
+  <li *ngFor="let item of cat">{{item.name}},{{item.sex}},{{item.age}},{{item.color}},{{item.sterilized}},{{item.owned}}</li>
   <i class="fa fa-mars" aria-hidden="true"></i>
 </ul>
 
