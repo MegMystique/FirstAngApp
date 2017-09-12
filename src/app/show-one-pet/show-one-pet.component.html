@@ -1,0 +1,6 @@
+<div>
+  <img src="{{cat.photos[0]}}" class="round">
+  <h3>{{cat.name}}/{{cat.id}}</h3>
+  {{cat.age}},<i class="fa fa-mars" *ngIf="cat.sex=='Male'"></i> <i class="fa fa-venus" *ngIf="cat.sex=='Female'"></i> <i class="fa fa-question" *ngIf="cat.sex=='Indefinite'"></i>,{{cat.color}}
+  <span *ngIf="cat.sterilized">, Стрелилизован(а)</span>
+</div>

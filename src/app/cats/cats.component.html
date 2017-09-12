@@ -1,16 +1,3 @@
-<!--<section class="main" *ngIf="cats.length > 0">
-  <ul class="cats-list">
-    <li *ngFor="let cat of cats" >
-      <div class="view">
-
-
-        <label>{{cat.name}}</label>
-        <button class="destroy" (click)="removeCat(cat)"></button>
-      </div>
-    </li>
-  </ul>
-</section>-->
-<!-- Button trigger modal -->
 <nav class="navbar navbar-toggleable-md navbar-light "style="background-color: #FFF0F5	;">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -55,20 +42,33 @@
         <input class="form-control" [(ngModel)]="cat.age" #age2="ngModel"  required  placeholder = "Возраст"  />
 
         <input class="form-control" [(ngModel)]="cat.color" #color2="ngModel" required  placeholder = "Окрас"  />
-
+        <input type="file" name="photo" accept="image/*,image/jpeg" [(ngModel)]="cat.photos"/>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-        <button [disabled]="name2.invalid || age2.invalid || color2.invalid|| gender2.invalid" class="btn btn-primary" (click)="addItem(cat.name, cat.sex,cat.age,cat.color);cat.name=''; cat.sex='';cat.age='';cat.color=''" data-dismiss="modal">Сохранить</button>
+        <button [disabled]="name2.invalid || age2.invalid || color2.invalid|| gender2.invalid" class="btn btn-primary" (click)="addItem(cat.name, cat.sex,cat.age,cat.color);cat.name=''; cat.sex='';cat.age='';cat.color='';" data-dismiss="modal">Сохранить</button>
       </div>
     </div>
   </div>
 </div>
-<ul>
-  <li appHighlight *ngFor="let item of cat">{{item.name}}
-    <i class="fa fa-mars" *ngIf="item.sex=='Male'"></i> <i class="fa fa-venus" *ngIf="item.sex=='Female'"></i> <i class="fa fa-question" *ngIf="item.sex=='Indefinite'"></i>
-{{item.age}},{{item.color}},{{item.sterilized}},{{item.owned}}</li>
-</ul>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+      <div style='width: 100%; height: 500px;background-size: cover;'>
+        <div parallax speed="-15"  src="../assets/img/cat_header5.jpeg"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="container-fluid">
+  <div class="row justify-content-md-center">
+    <div class=" col-sm-6 col-md-6 col-md-4 col-xl-3" *ngFor="let item of cats">
+      <a [routerLink]="['pet', item.id]"><app-show-one-pet  [cat]="item"></app-show-one-pet></a>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
 
